@@ -20,7 +20,10 @@
      <url>http://jarsm2.dyndns.dk</url>
    </repository>
  </repositories-->
-
+<properties>
+    <maven.compiler.source>1.6</maven.compiler.source>
+    <maven.compiler.target>1.6</maven.compiler.target>
+  </properties>
   
   <dependencies>
     <dependency>
