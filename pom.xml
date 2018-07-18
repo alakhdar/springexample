@@ -40,9 +40,7 @@
 		<version>2.5.6</version>
 	</dependency> 
   </dependencies>
-<profiles>
-<profile>
-     <id>springexample-deploy</id>
+
  <distributionManagement>
     <repository>
       <id>springexample-releases</id>
@@ -55,8 +53,4 @@
       <url>http://localhost:8081/nexus/content/repositories/springexample-snapshots/</url>
     </snapshotRepository>
   </distributionManagement>
-</profile>
-	
-	
-  </profiles>
 </project>
