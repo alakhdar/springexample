@@ -1,17 +1,18 @@
-env.mvnHome = '/usr/share/maven3'
-node('mavenlabel') {
-   
-   
+node ('label'){
+   def mvnHome
    stage('Preparation') { // for display purposes
-      
-      git 'https://github.com/jglick/simple-maven-project-with-tests.git'
-        
-      
+      // Get some code from a GitHub repository
+      git credentialsId: '9d1ea3fb-7e95-424d-adce-61e1713259e2', url: 'git@github.com:alakhdar/springexample.git'
+
+      // Get the Maven tool.
+      // ** NOTE: This 'M3' Maven tool must be configured
+      // **       in the global configuration.           
+      mvnHome = 'c:/Users/lakhd_000/Desktop/maven'
    }
    stage('Build') {
-      
+      // Run the maven build
       if (isUnix()) {
-         sh "'${mvnHome}/bin/mn' clean install"
+         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
       } else {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
       }
@@ -20,9 +21,4 @@ node('mavenlabel') {
       junit '**/target/surefire-reports/TEST-*.xml'
       archive 'target/*.jar'
    }
-   stage('publish') {
-     echo 'vdjhvbhjdsb'
-   }
-   
-
 }
